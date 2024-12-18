@@ -1,0 +1,118 @@
+# NexusGuard Configuration File
+
+# General Settings
+general:
+  debug: false
+  log_level: "INFO"
+  output_dir: "reports"
+  temp_dir: "temp"
+  max_threads: 10
+
+# Scan Settings
+scan:
+  max_depth: 2
+  timeout: 30
+  rate_limit: 10
+  validate_ssl: true
+  follow_redirects: true
+  user_agent: "NexusGuard/1.0"
+
+# Rate Limiting
+rate_limiting:
+  dns_queries: 10  # queries per second
+  web_requests: 5  # requests per second
+  network_scans: 2 # scans per second
+  api_calls: 1     # API calls per second
+
+# Module Configuration
+modules:
+  network:
+    enabled: true
+    ports: "1-1000"
+    nmap_args: "-sV -sC"
+    timeout: 300
+    exclude_ports: "137,139,445"
+    service_detection: true
+    os_detection: true
+    
+  web:
+    enabled: true
+    threads: 10
+    timeout: 30
+    follow_redirects: true
+    max_depth: 3
+    screenshot: false
+    headers:
+      User-Agent: "NexusGuard/1.0"
+      Accept: "*/*"
+    
+  dns:
+    enabled: true
+    resolvers:
+      - "8.8.8.8"
+      - "1.1.1.1"
+    wordlist: "wordlists/subdomains.txt"
+    zone_transfer: true
+    wildcard_detection: true
+    
+  ssl:
+    enabled: true
+    check_expired: true
+    check_self_signed: true
+    min_tls_version: "TLS1.2"
+    check_weak_ciphers: true
+
+# API Configuration
+api:
+  shodan:
+    enabled: false
+    api_key: ""
+    rate_limit: 1
+  
+  censys:
+    enabled: false
+    api_key: ""
+    rate_limit: 1
+    
+  securitytrails:
+    enabled: false
+    api_key: ""
+    rate_limit: 1
+
+# Reporting Configuration
+reporting:
+  formats:
+    - json
+    - html
+    - csv
+  include_screenshots: false
+  severity_levels:
+    - CRITICAL
+    - HIGH
+    - MEDIUM
+    - LOW
+    - INFO
+
+# Advanced Configuration
+advanced:
+  proxy:
+    enabled: false
+    http: ""
+    https: ""
+    socks: ""
+  
+  dns:
+    timeout: 5
+    retries: 3
+    edns: true
+    
+  http:
+    timeout: 10
+    verify_ssl: true
+    allow_redirects: true
+    max_redirects: 5
+    
+  network:
+    fragment_size: 1500
+    source_port: 0
+    interface: ""

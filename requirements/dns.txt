@@ -1,0 +1,5 @@
+# DNS and Subdomain Tools
+aiodns>=3.1.1
+async-timeout>=4.0.3
+dnspython>=2.4.2
+dnslib>=0.9.24

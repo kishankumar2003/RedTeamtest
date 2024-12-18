@@ -1,0 +1,41 @@
+# Core requirements - install these first
+# Note: For Kali Linux users
+# 1. Create a virtual environment first:
+#    python3 -m venv titan-env
+#    source titan-env/bin/activate
+#
+# 2. Then install requirements:
+#    python3 -m pip install --no-cache-dir -r requirements/core.txt
+#    python3 -m pip install --no-cache-dir -r requirements/network.txt
+#    python3 -m pip install --no-cache-dir -r requirements/web.txt
+#    python3 -m pip install --no-cache-dir -r requirements/dns.txt
+#    python3 -m pip install --no-cache-dir -r requirements/ssl.txt
+#    python3 -m pip install --no-cache-dir -r requirements/optional.txt
+#
+# 3. Some tools are better installed via apt:
+#    sudo apt install nmap bind9-utils whois nikto dirb whatweb
+
+-r requirements/core.txt
+
+# Module-specific requirements - install these as needed
+-r requirements/network.txt
+-r requirements/web.txt
+-r requirements/dns.txt
+-r requirements/ssl.txt
+
+# Optional requirements
+-r requirements/optional.txt
+
+# Note: If you encounter installation issues:
+# 1. Try installing packages one by one using:
+#    python -m pip install --no-cache-dir <package_name>
+# 2. Make sure you have the latest pip:
+#    python -m pip install --upgrade pip
+# 3. Install system dependencies if needed:
+#    - Windows: Install Visual C++ Build Tools
+#    - Linux: sudo apt-get install python3-dev build-essential
+# 4. If using Python 3.12, some packages might need older versions
+# 5. Create a virtual environment first:
+#    python -m venv venv
+#    source venv/bin/activate  # Linux
+#    venv\Scripts\activate     # Windows

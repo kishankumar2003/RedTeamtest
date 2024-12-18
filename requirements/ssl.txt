@@ -1,0 +1,6 @@
+# SSL/TLS Security Dependencies - Simplified
+cryptography>=39.0.0
+pyOpenSSL>=23.0.0
+certifi>=2023.7.22
+# Removed sslyze and nassl due to compatibility issues
+# Using custom SSL scanner implementation instead

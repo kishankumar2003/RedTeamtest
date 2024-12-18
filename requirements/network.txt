@@ -1,0 +1,4 @@
+# Network Scanning Dependencies
+python-nmap>=0.7.1
+shodan>=1.31.0
+aiohttp-socks>=0.8.4
